@@ -21,7 +21,7 @@ import java.util.Collection;
 @RequestMapping("/v1/diskSharing/disk")
 public class DiskController {
     
-    @Autowired
+    @Autowired(required = true)
     private DiskRepository diskRepository;
     
     @RequestMapping(method = RequestMethod.OPTIONS)

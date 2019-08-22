@@ -26,6 +26,7 @@ public class TakenItem {
     
     public TakenItem() {
         super();
+        this.isFree = (currentOwner == null);
     }
     public Disk getDisk() {
         return disk;
@@ -33,6 +34,7 @@ public class TakenItem {
     
     public void setDisk(@NotNull Disk disk) {
         this.disk = disk;
+        this.isFree = (currentOwner == null);
     }
     
     public User getCurrentOwner() {
@@ -41,7 +43,7 @@ public class TakenItem {
     
     public void setCurrentOwner(User currentOwner) {
         this.currentOwner = currentOwner;
-        setFree(currentOwner == null);
+        this.isFree = (currentOwner == null);
     }
     
     public TakenItem(Disk disk, User currentOwner) {

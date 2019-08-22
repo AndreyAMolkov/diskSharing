@@ -18,57 +18,7 @@ import javax.persistence.TypedQuery;
 public class DaoImp extends BaseDao implements Dao {
     @PersistenceContext
     private EntityManager em;
-    
-//    public Story getStory() {
-//        return new Story();
-//    }
-    
-//    @Transactional(rollbackFor = Exception.class)
-//    public void newAccount(Long id) {
-//        Client client = getClientById(id);
-//        client.setAccounts(new Account());
-//    }
-//    
-//    // MANDATORY: Transaction must be created before.
-//    @Transactional(propagation = Propagation.MANDATORY)
-//    public Long addAmount(Long id, Long amount, Long idPartner)
-//        throws BankTransactionException, TransactionSystemException {
-//        
-//        Account account = getAccountById(id);
-//        
-//        if (account == null) {
-//            throw new BankTransactionException("Account not found " + id);
-//        }
-//        Long amountBefore = account.getSum();
-//        if (account.getSum() + amount < 0) {
-//            throw new BankTransactionException(
-//                "The money in the account '" + id + "' is not enough (" + account.getSum() + ")");
-//        }
-//        
-//        if (amount >= 0) {
-//            Story storyInput = getStory();
-//            storyInput.input("transfer from " + idPartner, amount);
-//            account.setHistories(storyInput);
-//        } else {
-//            Story storyOutput = getStory();
-//            storyOutput.output("transfer to " + idPartner, amount);
-//            account.setHistories(storyOutput);
-//        }
-//        Long amountAfter = account.getSum();
-//        return amountBefore - amountAfter;
-//        
-//    }
-    
-//    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-//    public void sendMoney(Long fromAccountId, Long toAccountId, Long amount)
-//        throws BankTransactionException, TransactionSystemException {
-//        String nameMethod = "sendMoney";
-//        Long amountInput = addAmount(toAccountId, amount, fromAccountId);
-//        Long amountOutput = addAmount(fromAccountId, -amount, toAccountId);
-//        if (amountInput + amountOutput != 0L) {
-//            throw new BankTransactionException("Error check different amount for " + nameMethod);
-//        }
-//    }
+
     
     @Transactional(readOnly = true, rollbackFor = javax.persistence.NoResultException.class)
     @Override
@@ -104,17 +54,10 @@ public class DaoImp extends BaseDao implements Dao {
     public List<?> getAllTakenItemsFree() {
         TypedQuery<TakenItem> list = em
             .createQuery("SELECT c from TakenItem c WHERE c.isFree = :isFree", TakenItem.class)
-            .setParameter("isFree", false);
+            .setParameter("isFree", true);
         
         return list.getResultList();
     }
-//    @Transactional(rollbackFor = Exception.class)
-//    public void addSumAccount(Long number, Long sum, String source) {
-//        Account account = getAccountById(number);
-//        Story storyInput = getStory();
-//        storyInput.input(source, sum);
-//        account.setHistories(storyInput);
-//    }
     
     @Override
     @Transactional
@@ -122,7 +65,6 @@ public class DaoImp extends BaseDao implements Dao {
         User user = getUser(idUser);
         for (Disk d : user.getListDisk()) {
             if (d.getId().equals(IdDisk)) {
-//                d.setFreeForTake(isFree);
                 return true;
             }
         }
