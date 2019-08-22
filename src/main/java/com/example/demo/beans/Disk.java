@@ -16,11 +16,11 @@ public class Disk {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToOne // (cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     @JsonIgnore
     private User master;
-    @OneToOne // (cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     @JsonIgnore
     private User currentOwner;
@@ -32,7 +32,6 @@ public class Disk {
     }
     
     public Disk() {
-        ;// empty
     }
     
     public Disk(long id, String name, User master, User currentOwner) {
@@ -73,13 +72,7 @@ public class Disk {
     }
     
     public void setCurrentOwner(User currentOwner) {
-//        if (isFreeForTake()) {
-            this.currentOwner = currentOwner;
-//        } else {
-//            if (currentOwner != null) {
-//                throw new NotFreeException("you need to get permission from " + master.getName());
-//            }
-//        }
+        this.currentOwner = currentOwner;
     }
     
     @Override

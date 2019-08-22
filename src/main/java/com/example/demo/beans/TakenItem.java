@@ -12,9 +12,6 @@ import javax.validation.constraints.NotNull;
 @Entity(name = "TakenItem")
 @Table(name = "takenItems")
 public class TakenItem {
-    public TakenItem() {
-        super();
-    }
     
     @Id
     @GeneratedValue
@@ -27,6 +24,9 @@ public class TakenItem {
     private User currentOwner;
     private boolean isFree;
     
+    public TakenItem() {
+        super();
+    }
     public Disk getDisk() {
         return disk;
     }
@@ -41,11 +41,7 @@ public class TakenItem {
     
     public void setCurrentOwner(User currentOwner) {
         this.currentOwner = currentOwner;
-        if (currentOwner != null) {
-            setFree(false);
-        } else {
-            setFree(true);
-        }
+        setFree(currentOwner == null);
     }
     
     public TakenItem(Disk disk, User currentOwner) {

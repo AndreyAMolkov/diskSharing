@@ -26,7 +26,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private List<Disk> listDisk;
-//    private List<Disk> listForChange;
     
     public User(long id, String name) {
         super();

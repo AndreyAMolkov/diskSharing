@@ -24,23 +24,21 @@ public class DiskController {
     @Autowired
     private DiskRepository diskRepository;
     
-    // <1>
     @RequestMapping(method = RequestMethod.OPTIONS)
-    ResponseEntity<?> options() {
+    public ResponseEntity<?> options() {
         
         // @formatter:off
-        return ResponseEntity.ok().allow(HttpMethod.GET, HttpMethod.POST, HttpMethod.HEAD, HttpMethod.OPTIONS,
-            HttpMethod.PUT, HttpMethod.DELETE).build();
+        return ResponseEntity.ok().allow(HttpMethod.GET, HttpMethod.POST, HttpMethod.DELETE).build();
         // @formatter:on
     }
     
     @GetMapping
-    ResponseEntity<Collection<Disk>> getCollection() {
+    public ResponseEntity<Collection<Disk>> getCollection() {
         return ResponseEntity.ok(this.diskRepository.findAll());
     }
 
     @PostMapping
-    ResponseEntity<Disk> post(@RequestBody Disk d) { // <3>
+    public ResponseEntity<Disk> post(@RequestBody Disk d) { // <3>
 
         Disk disk = this.diskRepository.save(new Disk(d.getName()));
 
@@ -49,9 +47,8 @@ public class DiskController {
         return ResponseEntity.created(uri).body(disk);
     }
     
-    // <3>
     @DeleteMapping(value = "/{id}")
-    ResponseEntity<?> delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         return this.diskRepository.findById(id).map(d -> {
             diskRepository.delete(d);
             return ResponseEntity.noContent().build();
