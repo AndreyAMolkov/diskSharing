@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "972a3d1c-4492-4bac-b73d-43da22720b0a",
+		"name": "disckSharing USER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "start заполнение базы данных (пароль не нужен)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/start",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "добро пожаловать страница",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/user/diskSharing/welcome",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"user",
+						"diskSharing",
+						"welcome"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "список собственных дисков",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/user/diskSharing/user/disks",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"user",
+						"diskSharing",
+						"user",
+						"disks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "список всех TakenItem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/user/diskSharing/all/takenItem",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"user",
+						"diskSharing",
+						"all",
+						"takenItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "список дисков взятых пользователем",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/user/diskSharing/currentOwner",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"user",
+						"diskSharing",
+						"currentOwner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "список дисков взятых у пользователя",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/user/diskSharing/master",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"user",
+						"diskSharing",
+						"master"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "список всех свободных дисков",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/user/diskSharing/currentOwner/free",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"user",
+						"diskSharing",
+						"currentOwner",
+						"free"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

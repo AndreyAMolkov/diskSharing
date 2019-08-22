@@ -42,8 +42,8 @@ public class ControllerPopulateFirstData {
         Disk d3 = new Disk("Disk3");
         User admin = new User("Admin");
         User user = new User("User");
-        Credential crAdmin = new Credential("admin", "admin", "admin");
-        Credential crUser = new Credential("user", "user", "user");
+        Credential crAdmin = new Credential("admin", "admin", "ADMIN");
+        Credential crUser = new Credential("user", "user", "USER");
         admin.setDisk(d);
         admin.setCredential(crAdmin);
         user.setDisk(d2);

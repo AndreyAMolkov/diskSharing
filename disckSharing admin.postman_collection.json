@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "92db49c1-cb3b-4d48-a6aa-17e8b248a44a",
+		"name": "disckSharing admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllDisk admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/disk?login",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"disk"
+					],
+					"query": [
+						{
+							"key": "login",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "START PREPARATION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/start",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getUsers admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/user",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll User's disks admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/user/1/disks",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"user",
+						"1",
+						"disks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getAllTakenItem admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/takenItem",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"takenItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getAllTakenItemsOfCurrentOwnerId admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/takenItem/currentOwner/1",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"takenItem",
+						"currentOwner",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getAllTakenItemsOfMaster admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/takenItem/master/4",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"takenItem",
+						"master",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getAllTakenItemsFree admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/takenItem/currentOwner/free",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"takenItem",
+						"currentOwner",
+						"free"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add Disk To User admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/takenItem/user/1/disk/7",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"takenItem",
+						"user",
+						"1",
+						"disk",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addDisk admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":null,\"name\":\"name\",\"master\":null,\"freeForTake\": true,\"currentOwner\":null}"
+				},
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/disk",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"disk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addUser admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":0,\"name\":\"name\",\"listDisk\":[]}"
+				},
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/user",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET addTakenItem admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/takenItem/3",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"takenItem",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE deleteDisk admin",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":null,\"name\":\"name\",\"master\":null,\"currentOwner\":null}"
+				},
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/disk/2",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"disk",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE deleteUser admin",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":null,\"name\":\"name\",\"master\":null,\"currentOwner\":null}"
+				},
+				"url": {
+					"raw": "{{IP_ADDRESS}}/admin/diskSharing/user/2",
+					"host": [
+						"{{IP_ADDRESS}}"
+					],
+					"path": [
+						"admin",
+						"diskSharing",
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

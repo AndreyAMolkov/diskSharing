@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +18,8 @@ import java.util.List;
 
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @RestController
-@RequestMapping("/v2/diskSharing/takenItem")
-public class ControllerMain {
+@RequestMapping("/admin/diskSharing")
+public class ControllerMainAdmin {
     
     @Autowired
     private Dao dao;
@@ -31,7 +32,7 @@ public class ControllerMain {
         // @formatter:on
     }
     
-    @GetMapping
+    @GetMapping(value = "/all/takenItem")
     public ResponseEntity<List<TakenItem>> getAllCollectionTakenItems() {
         return ResponseEntity.ok(dao.getAllTakenItems());
     }
@@ -59,5 +60,9 @@ public class ControllerMain {
         return dao.getAllTakenItemsOfMaster(id);
         
     }
-
+    
+    @GetMapping(value = "/user/{id}/disks")
+    public ResponseEntity<?> getListDisks(@PathVariable Long id) {
+        return new ResponseEntity<>(dao.getListDisksForUser(id), HttpStatus.OK);
+    }
 }

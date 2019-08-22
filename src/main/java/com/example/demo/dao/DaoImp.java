@@ -110,4 +110,16 @@ public class DaoImp extends BaseDao implements Dao {
         
     }
     
+    @Override
+    public List<Disk> getListDisksForUser(Long idUser) {
+        List<Disk> list;
+        User user = getUser(idUser);
+        list = user.getListDisk();
+        List<TakenItem> takenItems = (List<TakenItem>)getAllTakenItemsOfCurrentOwner(idUser);
+        for (TakenItem t : takenItems) {
+            list.add(t.getDisk());
+        }
+        return list;
+    }
+    
 }

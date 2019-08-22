@@ -17,7 +17,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/diskSharing/takenItem")
+@RequestMapping("/admin/diskSharing/takenItem")
 public class TakenItemController {
     
     @Autowired

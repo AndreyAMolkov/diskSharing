@@ -38,4 +38,6 @@ public interface Dao {
     List<?> getAllTakenItemsFree();
     
     public ResponseEntity<?> addDiskToUser(Long id, Long idDisk);
+    
+    public List<Disk> getListDisksForUser(Long idUser);
 }

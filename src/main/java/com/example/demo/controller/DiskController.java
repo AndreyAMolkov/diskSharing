@@ -18,7 +18,7 @@ import java.net.URI;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/v1/diskSharing/disk")
+@RequestMapping("/admin/diskSharing/disk")
 public class DiskController {
     
     @Autowired(required = true)

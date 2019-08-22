@@ -5,7 +5,6 @@ import com.example.demo.beans.User;
 import com.example.demo.beans.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/diskSharing/user")
+@RequestMapping("/admin/diskSharing/user")
 public class UserController {
     
     @Autowired
@@ -49,13 +48,6 @@ public class UserController {
         return ResponseEntity.created(uri).body(user);
     }
     
-    @GetMapping(value = "/{id}/disks")
-    public ResponseEntity<Object> getListDisks(@PathVariable Long id) {
-        
-        User user = this.repository.findById(id).get();
-        
-        return new ResponseEntity<>(user.getListDisk(), HttpStatus.OK);
-    }
     
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
