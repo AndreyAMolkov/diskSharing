@@ -16,4 +16,5 @@ public class Helper {
     public static String getJSON(@NotNull User user) throws JsonProcessingException {
         return mapper.writeValueAsString(user);
     }
+    
 }

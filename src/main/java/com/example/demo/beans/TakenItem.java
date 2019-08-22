@@ -1,30 +1,78 @@
 package com.example.demo.beans;
 
-//@Entity
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity(name = "TakenItem")
+@Table(name = "takenItems")
 public class TakenItem {
+    public TakenItem() {
+        super();
+    }
+    
+    @Id
+    @GeneratedValue
+    private Long id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "disk_id")
     private Disk disk;
-    private User user;
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
+    @JoinColumn(name = "user_id")
+    private User currentOwner;
+    private boolean isFree;
     
     public Disk getDisk() {
         return disk;
     }
     
-    public void setDisk(Disk disk) {
+    public void setDisk(@NotNull Disk disk) {
         this.disk = disk;
     }
     
-    public User getUser() {
-        return user;
+    public User getCurrentOwner() {
+        return currentOwner;
     }
     
-    public void setUser(User user) {
-        this.user = user;
+    public void setCurrentOwner(User currentOwner) {
+        this.currentOwner = currentOwner;
+        if (currentOwner != null) {
+            setFree(false);
+        } else {
+            setFree(true);
+        }
     }
     
-    public TakenItem(Disk disk, User user) {
+    public TakenItem(Disk disk, User currentOwner) {
         super();
-        this.disk = disk;
-        this.user = user;
+        setDisk(disk);
+        setCurrentOwner(currentOwner);
+        
     }
     
+    public TakenItem(Disk disk) {
+        super();
+        setDisk(disk);
+    }
+    
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public boolean isFree() {
+        return isFree;
+    }
+    
+    public void setFree(boolean isFree) {
+        this.isFree = isFree;
+    }
 }

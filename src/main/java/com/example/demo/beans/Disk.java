@@ -1,13 +1,12 @@
 package com.example.demo.beans;
 
-import javax.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity(name = "Disk")
 @Table(name = "disks")
@@ -17,10 +16,13 @@ public class Disk {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToOne // (cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonIgnore
     private User master;
-    @Transient
+    @OneToOne // (cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonIgnore
     private User currentOwner;
     
     public Disk(long id, String name) {
@@ -50,10 +52,6 @@ public class Disk {
         return id;
     }
     
-    public void setId(long id) {
-        this.id = id;
-    }
-    
     public String getName() {
         return name;
     }
@@ -75,7 +73,13 @@ public class Disk {
     }
     
     public void setCurrentOwner(User currentOwner) {
-        this.currentOwner = currentOwner;
+//        if (isFreeForTake()) {
+            this.currentOwner = currentOwner;
+//        } else {
+//            if (currentOwner != null) {
+//                throw new NotFreeException("you need to get permission from " + master.getName());
+//            }
+//        }
     }
     
     @Override
@@ -88,9 +92,12 @@ public class Disk {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
+    public void setId(Long id) {
+        this.id = id;
+    }
     
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) {// NOSONAR
         if (this == obj)
             return true;
         if (obj == null)
