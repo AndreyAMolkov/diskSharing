@@ -11,7 +11,7 @@ public class HelperTest {
     @Test
     public void testGetJsonDisk() throws JsonProcessingException {
         Disk disk = new Disk("name");
-        assertEquals("{\"id\":null,\"name\":\"name\",\"master\":null,\"currentOwner\":null}", Helper.getJSON(disk));
+        assertEquals("{\"id\":null,\"name\":\"name\"}", Helper.getJSON(disk));
     }
     
     @Test
